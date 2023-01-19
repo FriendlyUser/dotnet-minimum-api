@@ -1,0 +1,18 @@
+v: 0
+micros:
+  - name: min-csharp-api
+    src: ./
+    engine: custom
+    commands:
+      - apt-get update -y
+      - apt-get install wget -y
+      - wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+      - dpkg -i packages-microsoft-prod.deb
+      - rm packages-microsoft-prod.deb
+      - apt-get update -y
+      - apt-get install -y dotnet-sdk-7.0
+      - dotnet publish -c Release -r linux-x64 --self-contained
+      - mv ./bin/Release/net7.0/linux-x64/publish/dotnet-minimum-api dotnet-minimum-api
+    run: ./dotnet-minimum-api
+    include:
+      - dotnet-minimum-api

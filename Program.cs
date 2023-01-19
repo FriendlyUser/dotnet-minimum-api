@@ -59,7 +59,14 @@ ipItems.MapGet("/info", async (HttpContext context) =>
     return await GetIpInfoAsync(ip);
 }).WithName("Get Server Ip Info").WithOpenApi();
 
-app.Run();
+// read port variable from PORT env var
+var port = Environment.GetEnvironmentVariable("PORT");
+if (string.IsNullOrEmpty(port))
+{
+    port = "8000";
+} 
+var url = $"http://0.0.0.0:{port}";
+app.Run(url);
 
 static async System.Threading.Tasks.Task<string> GetIpAddressAsync()
 {

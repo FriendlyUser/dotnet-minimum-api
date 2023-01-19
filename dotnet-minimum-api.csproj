@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>dotnet_minimum_api</RootNamespace> 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PublishSingleFile>true</PublishSingleFile> 
+    <SelfContained>true</SelfContained>
   </PropertyGroup>
 
   <ItemGroup>    
