@@ -42,7 +42,7 @@ if (string.IsNullOrEmpty(port))
 {
     port = "7860";
 } 
-var baseUrl = "https://0.0.0.0";
+var baseUrl = "https://localhost";
 // if dev use swagger
 if (app.Environment.IsDevelopment())
 {
@@ -54,7 +54,7 @@ if (app.Environment.IsDevelopment())
 } else {
     builder.Configuration["Kestrel:Certificates:Default:Path"] = "/etc/ssl/certs/dotnet-devcert.pem";
     builder.Configuration["Kestrel:Certificates:Default:KeyPath"] = "/etc/ssl/certs/dotnet-devcert.key";
-    baseUrl = "https://0.0.0.0";
+    baseUrl = "https://localhost";
 }
 
 // app.MapRazorPages();    
