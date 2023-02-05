@@ -28,9 +28,17 @@ builder.Services.AddSwaggerGen(options => {
     });
 });
 
+builder.Services.AddRazorPages(options =>
+{
+    // options.Conventions.AuthorizeFolder("/MyPages/Admin");
+})
+  .WithRazorPagesRoot("/Pages");
+
 var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.MapRazorPages();    
 
 app.MapGet("/", () => "Hello World!").WithName("Hello World")
 .WithOpenApi();;
@@ -63,7 +71,7 @@ ipItems.MapGet("/info", async (HttpContext context) =>
 var port = Environment.GetEnvironmentVariable("PORT");
 if (string.IsNullOrEmpty(port))
 {
-    port = "8000";
+    port = "7860";
 } 
 var url = $"http://0.0.0.0:{port}";
 app.Run(url);
