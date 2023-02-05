@@ -35,8 +35,13 @@ builder.Services.AddSwaggerGen(options => {
 //   .WithRazorPagesRoot("/Pages");
 
 var app = builder.Build();
-app.UseSwagger();
-app.UseSwaggerUI();
+// if dev use swagger
+if (app.Environment.IsDevelopment())
+{
+    // app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 // app.MapRazorPages();    
 
