@@ -42,8 +42,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 } else {
-    builder.Configuration["Kestrel:Certificates:Default:Path"] = "/etc/ssl/certs/cert.pem";
-    builder.Configuration["Kestrel:Certificates:Default:KeyPath"] = "/etc/ssl/certs/key.pem";
+    builder.Configuration["Kestrel:Certificates:Default:Path"] = "/etc/ssl/certs/dotnet-devcert.pem";
+    builder.Configuration["Kestrel:Certificates:Default:KeyPath"] = "/var/tmp/localhost-dev-cert/dotnet-devcert.key";
 }
 
 // app.MapRazorPages();    
