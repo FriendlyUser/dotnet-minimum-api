@@ -14,5 +14,6 @@ WORKDIR /App
 RUN apt update -y
 RUN apt install libnss3-tools -y
 RUN chmod +x scripts/ubuntu.sh && ./scripts/ubuntu.sh
+COPY scripts .
 COPY --from=build-env /App/out .
 ENTRYPOINT ["./dotnet-minimum-api"]
