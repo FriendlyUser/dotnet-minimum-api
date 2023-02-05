@@ -6,7 +6,7 @@ COPY . ./
 # Restore as distinct layers
 RUN dotnet restore
 # Build and publish a release
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Debug -o out
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/sdk:7.0
@@ -19,4 +19,5 @@ COPY --from=build-env /App/out .
 RUN cp dotnet-devcert.key /etc/ssl/certs/dotnet-devcert.key
 RUN chmod 644 /etc/ssl/certs/dotnet-devcert.key
 RUN chmod 644 /etc/ssl/certs/dotnet-devcert.pem
+RUN ASPNETCORE_ENVIRONMENT=Development dotnet run
 ENTRYPOINT ["./dotnet-minimum-api"]
