@@ -18,5 +18,5 @@ RUN ls /etc/ssl/certs && chmod +x ubuntu.sh && ./ubuntu.sh
 COPY --from=build-env /App/out .
 RUN cp dotnet-devcert.key /etc/ssl/certs/dotnet-devcert.key
 RUN chmod 644 /etc/ssl/certs/dotnet-devcert.key
-RUN chmod 644 /etc/ssl/certs/dotnet-devcert.crt
+RUN chmod 644 /etc/ssl/certs/dotnet-devcert.pem
 ENTRYPOINT ["./dotnet-minimum-api"]
