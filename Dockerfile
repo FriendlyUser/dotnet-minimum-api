@@ -16,4 +16,5 @@ RUN apt install libnss3-tools -y
 COPY scripts/*.sh ./
 RUN ls /etc/ssl/certs && chmod +x ubuntu.sh && ./ubuntu.sh
 COPY --from=build-env /App/out .
+RUN cp dotnet-devcert.key /etc/ssl/certs/dotnet-devcert.key
 ENTRYPOINT ["./dotnet-minimum-api"]
