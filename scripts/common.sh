@@ -1,5 +1,5 @@
 #!/bin/sh
-SAVE=0
+SAVE=1
 
 usage() {
     echo "Usage: $0 [-s]"
@@ -91,4 +91,7 @@ if [ "$SAVE" = 1 ]; then
    echo "Saved certificate to $HOME/$(basename $CRTFILE)"
    cp $PFXFILE $HOME
    echo "Saved certificate to $HOME/$(basename $PFXFILE)"
+   cp $KEYFILE $HOME
+   echo "Saved certificate to $HOME/$(basename $KEYFILE)"
+   cp $KEYFILE .
 fi
