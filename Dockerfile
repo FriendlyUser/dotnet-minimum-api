@@ -11,6 +11,7 @@ RUN dotnet publish -c Release -o out
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/sdk:7.0
 WORKDIR /App
+RUN apt get update -y
 RUN apt install libnss3-tools -y
 RUN chmod +x scripts/ubuntu.sh && ./scripts/ubuntu.sh
 COPY --from=build-env /App/out .
