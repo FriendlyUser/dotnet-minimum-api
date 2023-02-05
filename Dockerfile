@@ -19,5 +19,4 @@ COPY --from=build-env /App/out .
 RUN cp dotnet-devcert.key /etc/ssl/certs/dotnet-devcert.key
 RUN chmod 644 /etc/ssl/certs/dotnet-devcert.key
 RUN chmod 644 /etc/ssl/certs/dotnet-devcert.pem
-RUN ASPNETCORE_ENVIRONMENT=Development dotnet run
 ENTRYPOINT ["./dotnet-minimum-api"]
