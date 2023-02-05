@@ -52,7 +52,7 @@ if (app.Environment.IsDevelopment())
 } else {
     builder.Configuration["Kestrel:Certificates:Default:Path"] = "/etc/ssl/certs/dotnet-devcert.pem";
     builder.Configuration["Kestrel:Certificates:Default:KeyPath"] = "/etc/ssl/certs/dotnet-devcert.key";
-    baseUrl = "https://friendlyuser-asp-pages-ip.hf.space"
+    baseUrl = "https://friendlyuser-asp-pages-ip.hf.space";
 }
 
 // app.MapRazorPages();    
