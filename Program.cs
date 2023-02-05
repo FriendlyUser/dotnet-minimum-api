@@ -28,20 +28,20 @@ builder.Services.AddSwaggerGen(options => {
     });
 });
 
-builder.Services.AddRazorPages(options =>
-{
-    // options.Conventions.AuthorizeFolder("/MyPages/Admin");
-})
-  .WithRazorPagesRoot("/Pages");
+// builder.Services.AddRazorPages(options =>
+// {
+//     // options.Conventions.AuthorizeFolder("/MyPages/Admin");
+// })
+//   .WithRazorPagesRoot("/Pages");
 
 var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.MapRazorPages();    
+// app.MapRazorPages();    
 
 app.MapGet("/", () => "Hello World!").WithName("Hello World")
-.WithOpenApi();;
+.WithOpenApi();
 
 var ipItems = app.MapGroup("/ip");
 
