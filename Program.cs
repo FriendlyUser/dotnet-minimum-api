@@ -35,6 +35,14 @@ builder.Services.AddSwaggerGen(options => {
 //   .WithRazorPagesRoot("/Pages");
 
 var app = builder.Build();
+
+// read port variable from PORT env var
+var port = Environment.GetEnvironmentVariable("PORT");
+if (string.IsNullOrEmpty(port))
+{
+    port = "7860";
+} 
+var baseUrl = "https://0.0.0.0";
 // if dev use swagger
 if (app.Environment.IsDevelopment())
 {
@@ -44,6 +52,7 @@ if (app.Environment.IsDevelopment())
 } else {
     builder.Configuration["Kestrel:Certificates:Default:Path"] = "/etc/ssl/certs/dotnet-devcert.pem";
     builder.Configuration["Kestrel:Certificates:Default:KeyPath"] = "/etc/ssl/certs/dotnet-devcert.key";
+    baseUrl = "https://friendlyuser-asp-pages-ip.hf.space"
 }
 
 // app.MapRazorPages();    
@@ -75,13 +84,7 @@ ipItems.MapGet("/info", async (HttpContext context) =>
     return await GetIpInfoAsync(ip);
 }).WithName("Get Server Ip Info").WithOpenApi();
 
-// read port variable from PORT env var
-var port = Environment.GetEnvironmentVariable("PORT");
-if (string.IsNullOrEmpty(port))
-{
-    port = "7860";
-} 
-var url = $"https://0.0.0.0:{port}";
+var url = $"{baseUrl}:{port}";
 app.Run(url);
 
 static async System.Threading.Tasks.Task<string> GetIpAddressAsync()
