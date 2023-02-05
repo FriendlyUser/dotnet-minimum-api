@@ -73,7 +73,7 @@ if (string.IsNullOrEmpty(port))
 {
     port = "7860";
 } 
-var url = $"https://0.0.0.0:{port}";
+var url = $"http://0.0.0.0:{port}";
 app.Run(url);
 
 static async System.Threading.Tasks.Task<string> GetIpAddressAsync()
